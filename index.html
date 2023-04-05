@@ -23,7 +23,7 @@
       </nav>
     </div>
     <div class='left-info-navigation-container'>
-      <button class='add-book-button'>Add Book</button>
+      <button class='add-book-button' id='addBookButton'>Add Book</button>
       <header><h3>Recently Added Books:</h3></header>
       <ul>
         <li class="book-link">The Hobbit</li>
@@ -35,22 +35,37 @@
     </div>
     <div class='main-info-container'>
       <!-- Hide/Show Form/Book Container Depending on What User Wants To Do -->
-      <div class="form-container">
+      <div class="form-container" id='formContainer'>
         <form class='add-book-form'>
-          <label for="bookTitle" class="book-info-label">Book Title:<input type="text" class="book-info-input" id='bookTitle'></label>
-          <label for="bookAuthor" class="book-info-label">Book Author:<input type="text" class="book-info-input" id='bookAuthor'></label>
-          <label for="bookPages" class="book-info-label">Number of Pages:<input type="text" class="book-info-input" id='bookPages'></label>
-          <label for="bookReadStatus" class="book-info-label">Read Status:<input type="text" class="book-info-input" id='bookReadStatus'></label>
-          <button class='submit-book-form' id='buttonSubmitForm'>Submit Book To Your Library</button>
+          <label for="addBookTitle" class="book-info-label">Book Title:
+            <input type="text" class="book-info-input" id='addBookTitle'>
+          </label>
+          <label for="addBookAuthor" class="book-info-label">Book Author:
+            <input type="text" class="book-info-input" id='addBookAuthor'>
+          </label>
+          <label for="addBookPages" class="book-info-label">Number of Pages:
+            <input type="number" class="book-info-input" id='addBookPages'>
+          </label>
+          <fieldset id='bookReadStatusFieldset'>
+            <legend>Read Status:</legend>
+            <label for="addBookReadStatus" class="book-info-label">Book Read:
+              <input type="radio" name='read-status' class="book-info-input" id='addBookStatusRead' value='read'>
+            </label>
+            <br>
+            <label for="addBookReadStatusRead">Book Not Read:
+              <input type="radio" name='read-status' class="book-info-input" id='addBookStatusNotRead' value='not read'>
+            </label>
+         </fieldset>
+          <button class='submit-book-form' id='submitBookForm'>Submit Book To Your Library</button>
         </form>
       </div>
 
-      <div class="books-container">
-        <div class="item-container">The Hobbit</div>
-        <div class="item-container">The Name of the Wind</div>
-        <div class="item-container">The Forever War</div>
-        <div class="item-container">The Lost Fleet</div>
-        <div class="item-container">Rhythm of War</div>
+      <div class="books-container" id='booksContainer'>
+        <div class="book-item-container">The Hobbit</div>
+        <div class="book-item-container">The Name of the Wind</div>
+        <div class="book-item-container">The Forever War</div>
+        <div class="book-item-container">The Lost Fleet</div>
+        <div class="book-item-container">Rhythm of War</div>
       </div>
     </div>
   </div>

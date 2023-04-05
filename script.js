@@ -1,3 +1,20 @@
+// DOM connected variables:
+const addBookButton = document.getElementById('addBookButton'); // This button shows/hides the form to allow the user to add a book to their library.
+const formContainer = document.getElementById('formContainer');
+const booksContainer = document.getElementById('booksContainer');
+// DOM connected form variables:
+const addBookTitle = document.getElementById('addBookTitle');
+const addBookAuthor = document.getElementById('addBookAuthor');
+const addBookPages = document.getElementById('addBookPages');
+const addBookStatusRead = document.getElementById('addBookStatusRead');
+const addBookStatusNotRead = document.getElementById('addBookStatusNotRead');
+const submitBookForm = document.getElementById('submitBookForm');
+// Dom Connected Class Variables:
+const bookItemContainer = document.getElementsByClassName('book-item-container');
+const bookLink = document.getElementsByClassName('book-link');
+
+
+
 
 
 
