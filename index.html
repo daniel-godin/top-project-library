@@ -34,11 +34,24 @@
       </ul>
     </div>
     <div class='main-info-container'>
-      <div class="item-container">The Hobbit</div>
-      <div class="item-container">The Name of the Wind</div>
-      <div class="item-container">The Forever War</div>
-      <div class="item-container">The Lost Fleet</div>
-      <div class="item-container">Rhythm of War</div>
+      <!-- Hide/Show Form/Book Container Depending on What User Wants To Do -->
+      <div class="form-container">
+        <form class='add-book-form'>
+          <label for="bookTitle" class="book-info-label">Book Title:<input type="text" class="book-info-input" id='bookTitle'></label>
+          <label for="bookAuthor" class="book-info-label">Book Author:<input type="text" class="book-info-input" id='bookAuthor'></label>
+          <label for="bookPages" class="book-info-label">Number of Pages:<input type="text" class="book-info-input" id='bookPages'></label>
+          <label for="bookReadStatus" class="book-info-label">Read Status:<input type="text" class="book-info-input" id='bookReadStatus'></label>
+          <button class='submit-book-form' id='buttonSubmitForm'>Submit Book To Your Library</button>
+        </form>
+      </div>
+
+      <div class="books-container">
+        <div class="item-container">The Hobbit</div>
+        <div class="item-container">The Name of the Wind</div>
+        <div class="item-container">The Forever War</div>
+        <div class="item-container">The Lost Fleet</div>
+        <div class="item-container">Rhythm of War</div>
+      </div>
     </div>
   </div>
 </body>
