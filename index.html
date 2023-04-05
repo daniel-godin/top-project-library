@@ -35,7 +35,7 @@
     </div>
     <div class='main-info-container'>
       <!-- Hide/Show Form/Book Container Depending on What User Wants To Do -->
-      <div class="form-container" id='formContainer'>
+      <div class="form-container hidden" id='formContainer'>
         <form class='add-book-form'>
           <label for="addBookTitle" class="book-info-label">Book Title:
             <input type="text" class="book-info-input" id='addBookTitle'>
@@ -61,6 +61,20 @@
       </div>
 
       <div class="books-container" id='booksContainer'>
+        <!-- I don't love this style yet, need to work on it more next time.  I want the right side to be bold, not italized -->
+        <div class='book-item-container' id='hardCodedExample'>
+          <p>Book Title:  <em>The Lord of the Rings</em></p>
+          <p>Book Author:  <em>J.R.R Tolkien</em></p>
+          <p>Number of Pages:  <em>1,178 pages</em></p>
+          <p>Read Status:  <em>Read</em></p>
+          <!-- Possibly Add Buttons To "Share, Save, etc." -->
+        </div>
+
+
+
+
+
+
         <div class="book-item-container">The Hobbit</div>
         <div class="book-item-container">The Name of the Wind</div>
         <div class="book-item-container">The Forever War</div>
