@@ -21,7 +21,7 @@ const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 
 // Function to hide/show form div or library display div
 addBookButton.addEventListener("click", showLibraryOrForm);
-// backToLibraryButton.addEventListener('click', showLibraryOrForm());
+backToLibraryButton.addEventListener('click', showLibraryOrForm);
 
 function showLibraryOrForm() {
   if (formContainer.classList.contains('hidden') && backToLibraryButton.classList.contains('hidden')) {
