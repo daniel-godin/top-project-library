@@ -106,3 +106,11 @@ ul {
   width: 250px;
   height: 150px;
 }
+
+.book-descriptor {
+  font-size: .8rem;
+}
+
+.book-info {
+  font-weight: bold;
+}
