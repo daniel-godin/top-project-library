@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='./style.css'>
   <title>My Library Project - By Daniel Godin - For The Odin Project</title>
-  <script src='./script.js'></script>
 </head>
 <body>
   <div class='page-container'>
@@ -31,7 +30,8 @@
         <li class="book-link">The Lost Fleet</li>
         <li class="book-link">Rhythm of War</li>
       </ul>
-      <button class='add-book-button' id='addBookButton'>Add Book</button>
+      <button class='side-button' id='addBookButton'>Add Book</button>
+      <button class="side-button hidden" id="backToLibraryButton">Back To Library</button>
     </div>
     <div class='main-info-container'>
       <!-- Hide/Show Form/Book Container Depending on What User Wants To Do -->
@@ -70,11 +70,6 @@
           <!-- Possibly Add Buttons To "Share, Save, etc." -->
         </div>
 
-
-
-
-
-
         <div class="book-item-container">The Hobbit</div>
         <div class="book-item-container">The Name of the Wind</div>
         <div class="book-item-container">The Forever War</div>
@@ -83,5 +78,7 @@
       </div>
     </div>
   </div>
+
+<script src='./script.js'></script>
 </body>
 </html>
