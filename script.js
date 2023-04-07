@@ -9,7 +9,7 @@ const addBookAuthor = document.getElementById('addBookAuthor');
 const addBookPages = document.getElementById('addBookPages');
 const addBookStatusRead = document.getElementById('addBookStatusRead');
 const addBookStatusNotRead = document.getElementById('addBookStatusNotRead');
-const submitBookForm = document.getElementById('submitBookForm');
+const submitBookFormButton = document.getElementById('submitBookFormButton');
 // Dom Connected Class Variables:
 const bookItemContainer = document.getElementsByClassName('book-item-container');
 const bookLink = document.getElementsByClassName('book-link');
@@ -22,6 +22,8 @@ const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 // Function to hide/show form div or library display div
 addBookButton.addEventListener("click", showLibraryOrForm);
 backToLibraryButton.addEventListener('click', showLibraryOrForm);
+submitBookFormButton.addEventListener('click', showLibraryOrForm);
+
 
 function showLibraryOrForm() {
   if (formContainer.classList.contains('hidden') && backToLibraryButton.classList.contains('hidden')) {
