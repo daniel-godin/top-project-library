@@ -3,6 +3,7 @@ const addBookButton = document.getElementById('addBookButton'); // This button s
 const backToLibraryButton = document.getElementById('backToLibraryButton');
 const formContainer = document.getElementById('formContainer');
 const booksContainer = document.getElementById('booksContainer');
+const recentlyAddedBooksList = document.getElementById('recentlyAddedBooksList');
 // DOM connected form variables:
 const addBookTitle = document.getElementById('addBookTitle');
 const addBookAuthor = document.getElementById('addBookAuthor');
@@ -17,14 +18,15 @@ const bookLink = document.getElementsByClassName('book-link');
 
 
 // Example From Earlier lesson:
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
+// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 
 // Function to hide/show form div or library display div
 addBookButton.addEventListener("click", showLibraryOrForm);
 backToLibraryButton.addEventListener('click', showLibraryOrForm);
 submitBookFormButton.addEventListener('click', showLibraryOrForm);
+submitBookFormButton.addEventListener('click', Book);
 
-
+// Function which toggles the "hidden" class to show/hide the library div or form div.
 function showLibraryOrForm() {
   if (formContainer.classList.contains('hidden') && backToLibraryButton.classList.contains('hidden')) {
     formContainer.classList.toggle('hidden');
@@ -41,14 +43,7 @@ function showLibraryOrForm() {
   }
 }
 
-function libraryToForm() {
-  formContainer.classList.remove('hidden');
-  backToLibraryButton.classList.remove('hidden');
-  booksContainer.classList.add('hidden');
-  addBookButton.classList.add('hidden');
-}
-
-
+// myLibrary Array of Objects
 let myLibrary = [
   {
     title: 'The Hobbit',
@@ -75,8 +70,16 @@ function Book(title, author, pages, read) {
   }
 }
 
-function addBookToLibrary() {
-  // 
+function addBookToLibrary(event) {
+  let title = document.getElementById('addBookTitle').value;
+  let author = document.getElementById('addBookAuthor').value;
+  let pages = document.getElementById('addBookPages').value;
+  let read = document.getElementById('addBookTitle').value;
+  event.preventDefault();
+  return console.log(`${title} written by ${author} is ${pages} long.`);
 }
 
-console.log(theHobbit.info());
+
+
+
+// console.log(theHobbit.info());
