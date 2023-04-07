@@ -57,15 +57,16 @@
       <div class="main-section-container hidden" id='formContainer'>
         <div class='form-container'>
           <form class='add-book-form'>
-            <label for="addBookTitle" class="book-info-label">Book Title:
+            <div class="text-input-container">
+              <label for="addBookTitle" class="book-info-label">Book Title:</label>
               <input type="text" class="book-info-input" id='addBookTitle'>
-            </label>
-            <label for="addBookAuthor" class="book-info-label">Book Author:
+
+              <label for="addBookAuthor" class="book-info-label">Book Author:</label>
               <input type="text" class="book-info-input" id='addBookAuthor'>
-            </label>
-            <label for="addBookPages" class="book-info-label">Number of Pages:
+
+              <label for="addBookPages" class="book-info-label">Number of Pages:</label>
               <input type="number" class="book-info-input" id='addBookPages'>
-            </label>
+            </div>
             <fieldset id='bookReadStatusFieldset'>
               <legend>Read Status:</legend>
               <label for="addBookReadStatus" class="book-info-label">Book Read:
@@ -75,7 +76,7 @@
               <label for="addBookReadStatusRead">Book Not Read:
                 <input type="radio" name='read-status' class="book-info-input" id='addBookStatusNotRead' value='not read'>
               </label>
-          </fieldset>
+            </fieldset>
             <button class='submit-book-form' id='submitBookFormButton'>Submit Book To Your Library</button>
           </form>
         </div>

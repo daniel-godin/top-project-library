@@ -87,6 +87,7 @@ ul {
   grid-row: 2 / 3;
   grid-column: 2 / 3;
   padding: 40px;
+  width: 100%;
 }
 
 .books-container {
@@ -114,3 +115,43 @@ ul {
 .book-info {
   font-weight: bold;
 }
+
+.form-container {
+  width: 100%;
+  display: flex;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  gap: 10px;
+}
+
+.text-input-container {
+  display: grid;
+  grid-template-columns: 15ch 1fr;
+  row-gap: 10px;
+  align-items: center;
+}
+
+input[type='text'] {
+  grid-column: 2 / 3;
+  justify-self: end;
+  align-self: end;
+  width: 100%;
+}
+
+fieldset {
+  padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+
+}
+
+legend {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+
