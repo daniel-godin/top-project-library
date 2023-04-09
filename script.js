@@ -17,6 +17,10 @@ const bookLink = document.getElementsByClassName('book-link');
 
 
 
+
+
+
+
 // Example From Earlier lesson:
 // const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 
@@ -60,6 +64,23 @@ let myLibrary = [
 
 ];
 
+// Function to loop through array and then display/create items in the DOM.
+function createLibraryInDOM(arr) {
+  arr = myLibrary;
+  for (i = 0; i <= arr.length; i++) {
+    title = arr[i].title;
+    author = arr[i].author;
+    let book = title + " written by " + author;
+    console.log(book);
+  }
+  
+}
+
+createLibraryInDOM(myLibrary);
+
+
+
+
 function Book(title, author, pages, read) {
   this.title = title,
   this.author = author,
@@ -75,7 +96,26 @@ function addBookToLibrary(event) {
   let author = document.getElementById('addBookAuthor').value;
   let pages = document.getElementById('addBookPages').value;
   let read = document.getElementById('addBookTitle').value;
+  
+  const newBook = new Book(title, author, pages, read);
+
+  myLibrary.unshift(newBook);
+  
+  
+  
+  
+  
+  
+  
+  
   event.preventDefault();
+
+  //
+
+
+
+
+
   return console.log(`${title} written by ${author} is ${pages} long.`);
 }
 
