@@ -16,20 +16,27 @@ const submitBookFormButton = document.getElementById('submitBookFormButton');
 const bookItemContainer = document.getElementsByClassName('book-item-container');
 const bookLink = document.getElementsByClassName('book-link');
 
-
-
-
-
-
-
-// Example From Earlier lesson:
-// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-
-// Function to hide/show form div or library display div
+// Function and event listners to hide/show form div or library display div
 addBookButton.addEventListener("click", showLibraryOrForm);
 backToLibraryButton.addEventListener('click', showLibraryOrForm);
 submitBookFormButton.addEventListener('click', showLibraryOrForm);
 submitBookFormButton.addEventListener('click', Book);
+
+// myLibrary Array of Objects
+let myLibrary = [
+  {
+    title: 'The Hobbit',
+    author: 'J.R.R Tolkien',
+    pages: 295,
+    read: 'not read yet',
+  },
+  {
+    title: 'The Name Of The Wind',
+    author: 'Patrick Rothfuss',
+    pages: 662,
+    read: 'read',
+  },
+];
 
 // Function which toggles the "hidden" class to show/hide the library div or form div.
 function showLibraryOrForm() {
@@ -48,22 +55,6 @@ function showLibraryOrForm() {
   }
 }
 
-// myLibrary Array of Objects
-let myLibrary = [
-  {
-    title: 'The Hobbit',
-    author: 'J.R.R Tolkien',
-    pages: 295,
-    read: 'not read yet',
-  },
-  {
-    title: 'The Name Of The Wind',
-    author: 'Patrick Rothfuss',
-    pages: 662,
-    read: 'read',
-  },
-
-];
 
 // Function to loop through array and then display/create items in the DOM.
 function createLibraryInDOM(arr) {
@@ -87,14 +78,6 @@ function createLibraryInDOM(arr) {
   }
 }
 
-// Probably need to pass arguments from createLibraryInDOM().  title, book, etc.
-// This function is to create the html needed for a new book tile.  I have hardcoded it for now in the HTML.
-function createBookTile(arr) {
-  arr = myLibrary;
-}
-
-// createLibraryInDOM(myLibrary);
-
 // Displays 0 through n of myLibrary array in left navigation list.  Later:  Sorts by date added.
 function createRecentlyAddedBooksList(arr) {
   arr = myLibrary;
@@ -104,6 +87,8 @@ function createRecentlyAddedBooksList(arr) {
   }
 }
 
+// Example From Earlier lesson:
+// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
 
 function Book(title, author, pages, read) {
   this.title = title,
@@ -124,26 +109,11 @@ function addBookToLibrary(event) {
   const newBook = new Book(title, author, pages, read);
 
   myLibrary.unshift(newBook);
-  
-  
-  
-  
-  
-  
-  
-  
+
   event.preventDefault();
-
-  //
-
-
-
-
 
   return console.log(`${title} written by ${author} is ${pages} long.`);
 }
-
-
 
 // Functions that run on load
 createRecentlyAddedBooksList(myLibrary); // Function runs on load, and also I'll trigger it after submitting a new book.
