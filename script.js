@@ -67,7 +67,7 @@ let myLibrary = [
 // Function to loop through array and then display/create items in the DOM.
 function createLibraryInDOM(arr) {
   arr = myLibrary;
-  for (i = 0; i <= arr.length; i++) {
+  for (i = 0; i < arr.length; i++) {
     title = arr[i].title;
     author = arr[i].author;
     let book = title + " written by " + author;
@@ -76,10 +76,27 @@ function createLibraryInDOM(arr) {
   
 }
 
-createLibraryInDOM(myLibrary);
+// createLibraryInDOM(myLibrary);
+
+// Displays 0 through n of myLibrary array in left navigation list.  Later:  Sorts by date added.
+function createRecentlyAddedBooksList(arr) {
+  arr = myLibrary;
+  // let newRecentBookListItem = document.createElement('li');
+  for (i = 0; i < arr.length; i++) {
+    let recentBookTitle = arr[i].title;
+    recentlyAddedBooksList.insertAdjacentHTML('afterbegin', `<li class='book-link'>${recentBookTitle}</li>`);
+  
 
 
 
+
+
+    // recentlyAddedBooksList.innerHTML = `<li class='book-link'>${recentBookTitle}</li>`;
+    // console.log(`${recentBookTitle}`);
+  }
+}
+
+createRecentlyAddedBooksList(myLibrary);
 
 function Book(title, author, pages, read) {
   this.title = title,
