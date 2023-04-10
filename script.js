@@ -68,12 +68,28 @@ let myLibrary = [
 function createLibraryInDOM(arr) {
   arr = myLibrary;
   for (i = 0; i < arr.length; i++) {
-    title = arr[i].title;
-    author = arr[i].author;
-    let book = title + " written by " + author;
-    console.log(book);
+    let bookTitle = arr[i].title;
+    let bookAuthor = arr[i].author;
+    let bookPages = arr[i].pages;
+    let bookStatus = arr[i].read;
+    
+    booksContainer.insertAdjacentHTML('beforeend', 
+      `<div class='book-item-container'>
+        <p><span class='book-descriptor'>Book Title:</span>  <span class='book-info'>${bookTitle}</span></p>
+        <p><span class='book-descriptor'>Book Author:</span>  <span class='book-info'>${bookAuthor}</span></p>
+        <p><span class='book-descriptor'>Number of Pages:</span>  <span class='book-info'>${bookPages}</span></p>
+        <p><span class='book-descriptor'>Read Status:</span>  <span class='book-info'>${bookStatus}</span></p>
+        <!-- Possibly Add Buttons To "Share, Save, etc." -->
+        <button class='btn-delete-book'>Delete From Library</button>
+      </div>`
+    );
   }
-  
+}
+
+// Probably need to pass arguments from createLibraryInDOM().  title, book, etc.
+// This function is to create the html needed for a new book tile.  I have hardcoded it for now in the HTML.
+function createBookTile(arr) {
+  arr = myLibrary;
 }
 
 // createLibraryInDOM(myLibrary);
@@ -81,22 +97,12 @@ function createLibraryInDOM(arr) {
 // Displays 0 through n of myLibrary array in left navigation list.  Later:  Sorts by date added.
 function createRecentlyAddedBooksList(arr) {
   arr = myLibrary;
-  // let newRecentBookListItem = document.createElement('li');
   for (i = 0; i < arr.length; i++) {
     let recentBookTitle = arr[i].title;
-    recentlyAddedBooksList.insertAdjacentHTML('afterbegin', `<li class='book-link'>${recentBookTitle}</li>`);
-  
-
-
-
-
-
-    // recentlyAddedBooksList.innerHTML = `<li class='book-link'>${recentBookTitle}</li>`;
-    // console.log(`${recentBookTitle}`);
+    recentlyAddedBooksList.insertAdjacentHTML('afterbegin', `<li class='book-link'>${recentBookTitle}</li>`); // Adds a list item as the first child under <ul class="recently-added-books-list">
   }
 }
 
-createRecentlyAddedBooksList(myLibrary);
 
 function Book(title, author, pages, read) {
   this.title = title,
@@ -138,5 +144,6 @@ function addBookToLibrary(event) {
 
 
 
-
-// console.log(theHobbit.info());
+// Functions that run on load
+createRecentlyAddedBooksList(myLibrary); // Function runs on load, and also I'll trigger it after submitting a new book.
+createLibraryInDOM(myLibrary);
