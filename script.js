@@ -3,6 +3,7 @@ const addBookButton = document.getElementById('addBookButton'); // This button s
 const backToLibraryButton = document.getElementById('backToLibraryButton');
 const formContainer = document.getElementById('formContainer');
 const booksContainer = document.getElementById('booksContainer');
+const myLibraryContainer = document.getElementById('myLibraryContainer');
 const recentlyAddedBooksList = document.getElementById('recentlyAddedBooksList');
 // DOM connected form variables:
 const addBookTitle = document.getElementById('addBookTitle');
@@ -73,7 +74,7 @@ function createLibraryInDOM(arr) {
     let bookPages = arr[i].pages;
     let bookStatus = arr[i].read;
     
-    booksContainer.insertAdjacentHTML('beforeend', 
+    myLibraryContainer.insertAdjacentHTML('beforeend', 
       `<div class='book-item-container'>
         <p><span class='book-descriptor'>Book Title:</span>  <span class='book-info'>${bookTitle}</span></p>
         <p><span class='book-descriptor'>Book Author:</span>  <span class='book-info'>${bookAuthor}</span></p>
