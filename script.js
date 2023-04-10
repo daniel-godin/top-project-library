@@ -20,7 +20,7 @@ const bookLink = document.getElementsByClassName('book-link');
 addBookButton.addEventListener("click", showLibraryOrForm);
 backToLibraryButton.addEventListener('click', showLibraryOrForm);
 submitBookFormButton.addEventListener('click', showLibraryOrForm);
-submitBookFormButton.addEventListener('click', Book);
+submitBookFormButton.addEventListener('click', addBookToLibrary);
 
 // myLibrary Array of Objects
 let myLibrary = [
@@ -94,25 +94,25 @@ function Book(title, author, pages, read) {
   this.title = title,
   this.author = author,
   this.pages = pages,
-  this.read = read,
-  this.info = function() {
-      return `${title} by ${author}, ${pages} pages, ${read}.`
-  }
+  this.read = read
+  // this.log = function() {
+  //   console.log(`${title} written by ${author}.  It is ${pages} long, and you have ${read} this book.`)
 }
 
-function addBookToLibrary(event) {
+
+
+function addBookToLibrary(event, arr) {
+  arr = myLibrary;
   let title = document.getElementById('addBookTitle').value;
   let author = document.getElementById('addBookAuthor').value;
   let pages = document.getElementById('addBookPages').value;
   let read = document.getElementById('addBookTitle').value;
   
-  const newBook = new Book(title, author, pages, read);
-
-  myLibrary.unshift(newBook);
-
+  let newBook = new Book(title, author, pages, read);
+  arr.unshift(newBook);
+  createLibraryInDOM(arr);
   event.preventDefault();
 
-  return console.log(`${title} written by ${author} is ${pages} long.`);
 }
 
 // Functions that run on load
