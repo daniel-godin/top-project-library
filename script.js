@@ -109,10 +109,13 @@ function addBookToLibrary(event, arr) {
   let read = document.getElementById('addBookTitle').value;
   
   let newBook = new Book(title, author, pages, read);
-  arr.unshift(newBook);
-  createLibraryInDOM(arr);
-  event.preventDefault();
 
+  while (myLibraryContainer.firstChild) { // Removes all child nodes of the library (does not delete anything in the array myLibrary)
+    myLibraryContainer.removeChild(myLibraryContainer.firstChild);
+  }
+  arr.unshift(newBook); // adds a new Object into the array (myLibrary)
+  createLibraryInDOM(arr);
+  event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
 }
 
 // Functions that run on load
