@@ -22,13 +22,16 @@ addBookButton.addEventListener("click", showLibraryOrForm);
 backToLibraryButton.addEventListener('click', showLibraryOrForm);
 submitBookFormButton.addEventListener('click', showLibraryOrForm);
 submitBookFormButton.addEventListener('click', addBookToLibrary);
-// for (i = 0; i < btnDeleteBook.length; i++) {
-//   btnDeleteBook[i].addEventListener('click', deleteBookFromLibrary);
-// }
 
 Array.from(btnDeleteBook).forEach((btnDeleteBook) => {
   btnDeleteBook.addEventListener('click', () => {
-    btnDeleteBook.parentNode.remove();
+    console.log("Delete Button is Working");
+    // arr = myLibrary;
+    // let delBookId = btnDeleteBook.parentElement.dataset.bookId;
+    // console.log(delBookId);
+    // arr.splice(delBookId, 1);
+    // createLibraryInDOM(arr);
+    // // btnDeleteBook.parentNode.remove();
   });
 });
 
@@ -37,19 +40,19 @@ Array.from(btnDeleteBook).forEach((btnDeleteBook) => {
 // myLibrary Array of Objects
 let myLibrary = [
   {
-    bookId: 999_999_999,
+    bookId: 1,
     title: 'The Hobbit',
     author: 'J.R.R Tolkien',
     pages: 295,
     read: 'not read yet',
   },
   {
-    bookId: 111_111_123,
+    bookId: 2,
     title: 'The Name Of The Wind',
     author: 'Patrick Rothfuss',
     pages: 662,
     read: 'read',
-  },
+  }
 ];
 
 // Function which toggles the "hidden" class to show/hide the library div or form div.
@@ -73,7 +76,7 @@ function showLibraryOrForm() {
 // Function to loop through array and then display/create items in the DOM.
 function createLibraryInDOM(arr) {
   arr = myLibrary;
-  for (i = 0; i < arr.length; i++) {
+  for (i = arr.length - 1; i >= 0; i--) {
     let bookTitle = arr[i].title;
     let bookAuthor = arr[i].author;
     let bookPages = arr[i].pages;
@@ -81,13 +84,13 @@ function createLibraryInDOM(arr) {
     let bookIdNumber = arr[i].bookId;
     
     myLibraryContainer.insertAdjacentHTML('beforeend', 
-      `<div class='book-item-container' id='${bookIdNumber}'>
+      `<div class='book-item-container' data-book-id='${bookIdNumber}'>
         <p><span class='book-descriptor'>Book Title:</span>  <span class='book-info'>${bookTitle}</span></p>
         <p><span class='book-descriptor'>Book Author:</span>  <span class='book-info'>${bookAuthor}</span></p>
         <p><span class='book-descriptor'>Number of Pages:</span>  <span class='book-info'>${bookPages}</span></p>
         <p><span class='book-descriptor'>Read Status:</span>  <span class='book-info'>${bookStatus}</span></p>
         <!-- Possibly Add Buttons To "Share, Save, etc." -->
-        <button class='btn-delete-book' id='delete${bookIdNumber}Button'>Delete From Library</button>
+        <button class='btn-delete-book' data-book-id='${bookIdNumber}'>Delete From Library</button>
       </div>`
     );
   }
@@ -96,27 +99,19 @@ function createLibraryInDOM(arr) {
 // Displays 0 through n of myLibrary array in left navigation list.  Later:  Sorts by date added.
 function createRecentlyAddedBooksList(arr) {
   arr = myLibrary;
-  for (i = 0; i < arr.length; i++) {
+  for (i = arr.length - 1; i >= 0; i--) {
     let recentBookTitle = arr[i].title;
     recentlyAddedBooksList.insertAdjacentHTML('afterbegin', `<li class='book-link'>${recentBookTitle}</li>`); // Adds a list item as the first child under <ul class="recently-added-books-list">
   }
 }
 
-// Example From Earlier lesson:
-// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet');
-
-function Book(title, author, pages, read) {
-  this.bookId = function(){
-    Math.floor(Math.random() * 1_000_000);
-  }
+function Book(bookId, title, author, pages, read) {
+  this.bookId = bookId,
   this.title = title,
   this.author = author,
   this.pages = pages,
   this.read = read
-  
-  // this.log = function() {
-  //   console.log(`${title} written by ${author}.  It is ${pages} long, and you have ${read} this book.`)
-}
+  }
 
 function addBookToLibrary(event, arr) {
   arr = myLibrary;
@@ -124,8 +119,9 @@ function addBookToLibrary(event, arr) {
   let author = document.getElementById('addBookAuthor').value;
   let pages = document.getElementById('addBookPages').value;
   let read = document.getElementById('addBookTitle').value;
+  let bookId = arr.length + 1;
   
-  let newBook = new Book(title, author, pages, read);
+  let newBook = new Book(bookId, title, author, pages, read);
 
   while (myLibraryContainer.firstChild) { // Removes all child nodes of the library (does not delete anything in the array myLibrary)
     myLibraryContainer.removeChild(myLibraryContainer.firstChild);
@@ -135,13 +131,12 @@ function addBookToLibrary(event, arr) {
   event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
 }
 
-function deleteBookFromLibrary(arr) {
-  arr = myLibrary;
-  for (i = 0; i < arr.length; i++) {
-    if (arr[i].bookId === // <--- HOW TO CONNECT THE PARENT ELEMENT ID OR SOME OTHER CHECK FROM THE DOM? TO DELETE THAT ARRAY SPOT )
-      Array.SPLICE(i, 1);
-  }
-}
+// function deleteBookFromLibrary(arr) {
+//   arr = myLibrary;
+//   let delBookId = this.dataset.bookId;
+//   console.log(delBookId);
+  
+// }
 
 // Functions that run on load
 createRecentlyAddedBooksList(myLibrary); // Function runs on load, and also I'll trigger it after submitting a new book.
