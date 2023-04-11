@@ -101,7 +101,7 @@ function createRecentlyAddedBooksList(arr) {
   arr = myLibrary;
   for (i = arr.length - 1; i >= 0; i--) {
     let recentBookTitle = arr[i].title;
-    recentlyAddedBooksList.insertAdjacentHTML('afterbegin', `<li class='book-link'>${recentBookTitle}</li>`); // Adds a list item as the first child under <ul class="recently-added-books-list">
+    recentlyAddedBooksList.insertAdjacentHTML('beforeend', `<li class='book-link'>${recentBookTitle}</li>`); // Adds a list item as the first child under <ul class="recently-added-books-list">
   }
 }
 
@@ -123,12 +123,24 @@ function addBookToLibrary(event, arr) {
   
   let newBook = new Book(bookId, title, author, pages, read);
 
+  reset();
+
+  // while (myLibraryContainer.firstChild) { // Removes all child nodes of the library (does not delete anything in the array myLibrary)
+  //   myLibraryContainer.removeChild(myLibraryContainer.firstChild);
+  // }
+  arr.push(newBook); // adds a new Object into the array (myLibrary)
+  createLibraryInDOM(arr);
+  createRecentlyAddedBooksList(arr);
+  event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
+}
+
+function reset() {
+  while (recentlyAddedBooksList.firstChild) {
+    recentlyAddedBooksList.removeChild(recentlyAddedBooksList.firstChild);
+  }
   while (myLibraryContainer.firstChild) { // Removes all child nodes of the library (does not delete anything in the array myLibrary)
     myLibraryContainer.removeChild(myLibraryContainer.firstChild);
   }
-  arr.unshift(newBook); // adds a new Object into the array (myLibrary)
-  createLibraryInDOM(arr);
-  event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
 }
 
 // function deleteBookFromLibrary(arr) {
