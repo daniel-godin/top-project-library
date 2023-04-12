@@ -30,14 +30,14 @@ function eventListeners() {
 // myLibrary Array of Objects
 let myLibrary = [
   {
-    bookId: 1,
+    bookId: 0,
     title: 'The Hobbit',
     author: 'J.R.R Tolkien',
     pages: 295,
     read: 'Not Read',
   },
   {
-    bookId: 2,
+    bookId: 1,
     title: 'The Name Of The Wind',
     author: 'Patrick Rothfuss',
     pages: 662,
