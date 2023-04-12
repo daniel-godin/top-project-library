@@ -34,14 +34,14 @@ let myLibrary = [
     title: 'The Hobbit',
     author: 'J.R.R Tolkien',
     pages: 295,
-    read: 'not read yet',
+    read: 'Not Read',
   },
   {
     bookId: 2,
     title: 'The Name Of The Wind',
     author: 'Patrick Rothfuss',
     pages: 662,
-    read: 'read',
+    read: 'Read',
   }
 ];
 
