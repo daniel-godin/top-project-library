@@ -42,6 +42,13 @@ let myLibrary = [
     author: 'Patrick Rothfuss',
     pages: 662,
     read: 'Read',
+  },
+  {
+    bookId: 2,
+    title: 'The Lost Fleet: Dauntless',
+    author: 'Jack Campbell',
+    pages: 293,
+    read: 'Read',
   }
 ];
 
@@ -64,22 +71,21 @@ function showLibraryOrForm() {
 
 // Function to loop through array and then display/create items in the DOM.
 function createLibraryInDOM(arr) {
-  arr = myLibrary;
-  for (i = 0; i <= arr.length - 1; i++) {
+  for (i = 0; i < arr.length; i++) {
+    let bookId = arr[i].bookId;
     let bookTitle = arr[i].title;
     let bookAuthor = arr[i].author;
     let bookPages = arr[i].pages;
     let bookStatus = arr[i].read;
-    let bookIdNumber = arr[i].bookId;
     
     myLibraryContainer.insertAdjacentHTML('afterbegin', 
-      `<div class='book-item-container' data-book-id='${bookIdNumber}'>
+      `<div class='book-item-container'>
         <p><span class='book-descriptor'>Book Title:</span>  <span class='book-info'>${bookTitle}</span></p>
         <p><span class='book-descriptor'>Book Author:</span>  <span class='book-info'>${bookAuthor}</span></p>
         <p><span class='book-descriptor'>Number of Pages:</span>  <span class='book-info'>${bookPages}</span></p>
         <p><span class='book-descriptor'>Read Status:</span>  <span class='book-info'>${bookStatus}</span></p>
         <!-- Possibly Add Buttons To "Share, Save, etc." -->
-        <button class='btn-delete-book' data-book-id='${bookIdNumber}'>Delete From Library</button>
+        <button class='btn-delete-book' data-book-id='${bookId}'>Delete From Library</button>
       </div>`
     );
   }
@@ -159,6 +165,4 @@ function deleteBookFromLibrary() {
 
 // Functions that run on load
 createLibraryInDOM(myLibrary);
-
-
 eventListeners(); // Always have this last.
