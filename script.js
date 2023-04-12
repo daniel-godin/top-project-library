@@ -22,7 +22,7 @@ function eventListeners() {
   backToLibraryButton.addEventListener('click', showLibraryOrForm);
   submitBookFormButton.addEventListener('click', showLibraryOrForm);
   submitBookFormButton.addEventListener('click', addBookToLibrary);
-  for (i = 0; i <= btnDeleteBook.length - 1; i++) {
+  for (i = 0; i < btnDeleteBook.length; i++) {
     btnDeleteBook[i].addEventListener('click', deleteBookFromLibrary);
   }
 }
@@ -85,7 +85,7 @@ function createLibraryInDOM(arr) {
         <p><span class='book-descriptor'>Number of Pages:</span>  <span class='book-info'>${bookPages}</span></p>
         <p><span class='book-descriptor'>Read Status:</span>  <span class='book-info'>${bookStatus}</span></p>
         <!-- Possibly Add Buttons To "Share, Save, etc." -->
-        <button class='btn-delete-book' data-book-id='${bookId}'>Delete From Library</button>
+        <button class='btn-delete-book' data-id='${bookId}'>Delete From Library</button>
       </div>`
     );
   }
@@ -99,21 +99,22 @@ function Book(bookId, title, author, pages, read) {
   this.read = read
   }
 
-function addBookToLibrary(event, arr) {
-  arr = myLibrary;
+function addBookToLibrary(event) {
+  let arr = myLibrary;
+  let bookId = arr.length;
   let title = document.getElementById('addBookTitle').value;
   let author = document.getElementById('addBookAuthor').value;
   let pages = document.getElementById('addBookPages').value;
   let read = document.getElementById('addBookTitle').value;
-  let bookId = arr.length;
   
   let newBook = new Book(bookId, title, author, pages, read);
 
-  reset(); // Function to reload my recent books list and library from Array.  If I don't do this, it creates duplicates.  I could potentially check if somethign already exists and not add it, later.
   arr.push(newBook); // adds a new Object into the array (myLibrary)
-  // createLibraryInDOM(arr);
-  // createRecentlyAddedBooksList(arr);
-  eventListeners();
+  console.table(arr);
+  // // createLibraryInDOM(arr);
+  // // reset(); // Function to reload my recent books list and library from Array.  If I don't do this, it creates duplicates.  I could potentially check if somethign already exists and not add it, later.
+
+  // eventListeners();
   event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
 }
 

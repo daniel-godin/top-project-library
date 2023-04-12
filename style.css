@@ -105,7 +105,7 @@ ul {
   border: 1px solid blue;
   border-radius: 10px;
   width: 250px;
-  height: 120px;
+  height: fit-content;
 }
 
 .book-descriptor {
