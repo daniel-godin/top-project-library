@@ -4,6 +4,7 @@ const backToLibraryButton = document.getElementById('backToLibraryButton');
 const formContainer = document.getElementById('formContainer');
 const booksContainer = document.getElementById('booksContainer');
 const myLibraryContainer = document.getElementById('myLibraryContainer');
+const addBookForm = document.getElementById('addBookForm');
 // DOM connected form variables:
 const addBookTitle = document.getElementById('addBookTitle');
 const addBookAuthor = document.getElementById('addBookAuthor');
@@ -104,13 +105,18 @@ function addBookToLibrary(event) {
   let bookId = arr.length;
   let title = document.getElementById('addBookTitle').value;
   let author = document.getElementById('addBookAuthor').value;
-  let pages = document.getElementById('addBookPages').value;
-  let read = document.getElementById('addBookTitle').value;
+  let pages = Number(document.getElementById('addBookPages').value);
+  let read = document.querySelector("input[name='read-status']:checked").value;
   
   let newBook = new Book(bookId, title, author, pages, read);
 
   arr.push(newBook); // adds a new Object into the array (myLibrary)
-  console.table(arr);
+  console.table(arr); // checking to see if array receives the new book
+
+  // addBookForm.reset();
+  // return false;
+
+
   // // createLibraryInDOM(arr);
   // // reset(); // Function to reload my recent books list and library from Array.  If I don't do this, it creates duplicates.  I could potentially check if somethign already exists and not add it, later.
 

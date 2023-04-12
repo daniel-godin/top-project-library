@@ -36,25 +36,25 @@
 
       <div class="main-section-container hidden" id='formContainer'>
         <div class='form-container'>
-          <form class='add-book-form'>
+          <form class='add-book-form' id='addBookForm'>
             <div class="text-input-container">
               <label for="addBookTitle" class="book-info-label">Book Title:</label>
-              <input type="text" class="book-info-input" id='addBookTitle' required>
+              <input type="text" class="book-info-input" id='addBookTitle' required >
 
               <label for="addBookAuthor" class="book-info-label">Book Author:</label>
-              <input type="text" class="book-info-input" id='addBookAuthor' required>
+              <input type="text" class="book-info-input" id='addBookAuthor' required >
 
               <label for="addBookPages" class="book-info-label">Number of Pages:</label>
-              <input type="number" class="book-info-input" id='addBookPages' required>
+              <input type="number" class="book-info-input" id='addBookPages' required >
             </div>
             <fieldset id='bookReadStatusFieldset'>
               <legend>Read Status:</legend>
               <label for="addBookReadStatus" class="book-info-label">Book Read:
-                <input type="radio" name='read-status' class="book-info-input" id='addBookStatusRead' value='Read' required>
+                <input type="radio" name='read-status' class="book-info-input" id='addBookStatusRead' value='Read' required >
               </label>
               <br>
               <label for="addBookReadStatusRead">Book Not Read:
-                <input type="radio" name='read-status' class="book-info-input" id='addBookStatusNotRead' value='Not Read' required>
+                <input type="radio" name='read-status' class="book-info-input" id='addBookStatusNotRead' value='Not Read' required >
               </label>
             </fieldset>
             <button class='submit-book-form' id='submitBookFormButton'>Submit Book To Your Library</button>
