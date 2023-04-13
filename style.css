@@ -107,7 +107,7 @@ ul {
   padding: 10px;
   border: 1px solid blue;
   border-radius: 10px;
-  width: 250px;
+  width: 275px;
   height: fit-content;
 }
 
@@ -117,6 +117,14 @@ ul {
 
 .book-info {
   font-weight: bold;
+}
+
+.btn-change-read-status {
+  padding: 1px;
+  margin: 1px;
+  font-size: smaller;
+  margin-left: 5px;
+  right: 1px;
 }
 
 .form-container {

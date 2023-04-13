@@ -85,7 +85,7 @@ function createLibraryInDOM(arr) {
         <p><span class='book-descriptor'>Book Title:</span>  <span class='book-info'>${bookTitle}</span></p>
         <p><span class='book-descriptor'>Book Author:</span>  <span class='book-info'>${bookAuthor}</span></p>
         <p><span class='book-descriptor'>Number of Pages:</span>  <span class='book-info'>${bookPages}</span></p>
-        <p><span class='book-descriptor'>Read Status:</span>  <span class='book-info'>${bookStatus}</span></p>
+        <p><span class='book-descriptor'>Read Status:</span>  <span class='book-info'>${bookStatus}</span><button class='btn-change-read-status'>Change Status</button></p>
         <!-- Possibly Add Buttons To "Share, Save, etc." -->
         <button class='btn-delete-book' data-id='${bookId}'>Delete From Library</button>
       </div>`
