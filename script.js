@@ -72,6 +72,7 @@ function showLibraryOrForm() {
 
 // Function to loop through array and then display/create items in the DOM.
 function createLibraryInDOM(arr) {
+  reset(); // Function to clear any remaining child elements of the library div container in the DOM.
   for (i = 0; i < arr.length; i++) {
     let bookId = arr[i].bookId;
     let bookTitle = arr[i].title;
@@ -113,27 +114,23 @@ function addBookToLibrary(event) {
   arr.push(newBook); // adds a new Object into the array (myLibrary)
   console.table(arr); // checking to see if array receives the new book
 
-  // addBookForm.reset();
-  // return false;
-
-
-  // // createLibraryInDOM(arr);
-  // // reset(); // Function to reload my recent books list and library from Array.  If I don't do this, it creates duplicates.  I could potentially check if somethign already exists and not add it, later.
-
-  // eventListeners();
+  addBookForm.reset();
   event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
+
+  createLibraryInDOM(myLibrary);
+  // reset() // Function to remove library DOM elements.  This prevents the page from creating many many duplicates.
+  // Maybe put reset() into the createLibrary function??
+  eventListeners();
 }
 
 function reset() { // Function to reload recent books list and library from the array(myLibrary)
   while (myLibraryContainer.firstChild) { // Removes all child nodes of the library (does not delete anything in the array myLibrary)
     myLibraryContainer.removeChild(myLibraryContainer.firstChild);
   }
-  createLibraryInDOM(myLibrary);
 }
 
 function deleteBookFromLibrary() {
   let arr = myLibrary;
-
   let btnBookId = Number(this.dataset.bookId);
   console.log(btnBookId);
 
@@ -149,11 +146,6 @@ function deleteBookFromLibrary() {
     }
   }
 
-
-
-
-
-
   // let bookId = this.parentElement.dataset.bookId - 1;
   // console.log(`bookId is ${bookId}`);
   // // loop through array, searching Object.bookId to match parentElement.dataset.bookId.
@@ -166,7 +158,6 @@ function deleteBookFromLibrary() {
   // }
   // reset();
   createLibraryInDOM(myLibrary);
-
   eventListeners()
 }
 
