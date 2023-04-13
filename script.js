@@ -132,7 +132,7 @@ function reset() { // Function to remove all book elements in the DOM.  Used to 
 
 function deleteBookFromLibrary() {
   let arr = myLibrary;
-  let btnBookId = Number(this.dataset.bookId);
+  let btnBookId = Number(this.dataset.id);
   console.log(btnBookId);
 
   for (i = 0; i < arr.length; i++) {
