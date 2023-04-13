@@ -72,7 +72,7 @@ function showLibraryOrForm() {
 
 // Function to loop through array and then display/create items in the DOM.
 function createLibraryInDOM(arr) {
-  reset(); // Function to clear any remaining child elements of the library div container in the DOM.
+  resetLibraryDOM(); // Function to clear any remaining child elements of the library div container in the DOM.
   for (i = 0; i < arr.length; i++) {
     let bookId = arr[i].bookId;
     let bookTitle = arr[i].title;
@@ -124,7 +124,7 @@ function addBookToLibrary(event) {
   // eventListeners();
 }
 
-function reset() { // Function to remove all book elements in the DOM.  Used to clear out before repopulating.  Prevents duplicates.
+function resetLibraryDOM() { // Function to remove all book elements in the DOM.  Used to clear out before repopulating.  Prevents duplicates.
   while (myLibraryContainer.firstChild) { // Removes all child nodes of the library (does not delete anything in the array myLibrary)
     myLibraryContainer.removeChild(myLibraryContainer.firstChild);
   }
@@ -134,11 +134,8 @@ function deleteBookFromLibrary() {
   let arr = myLibrary;
   let btnBookId = Number(this.dataset.id);
   console.log(btnBookId);
-
   for (i = 0; i < arr.length; i++) {
-    
     if (btnBookId === arr[i].bookId) {
-      
       console.log("book found");
       arr.splice(i, 1);
       break;
@@ -146,18 +143,6 @@ function deleteBookFromLibrary() {
       console.log("book not found to delete");
     }
   }
-
-  // let bookId = this.parentElement.dataset.bookId - 1;
-  // console.log(`bookId is ${bookId}`);
-  // // loop through array, searching Object.bookId to match parentElement.dataset.bookId.
-  // for (i = 0; i <= arr.length - 1; i++) {
-  //   if (arr[i].bookId === bookId) {
-  //     arr.splice(i, 1);
-  //   } else {
-  //     console.log('No Book Found');
-  //   }
-  // }
-  // reset();
   createLibraryInDOM(myLibrary);
   eventListeners()
 }
