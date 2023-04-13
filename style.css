@@ -1,6 +1,8 @@
 :root {
   /* CSS Variables: */
   --layout-left-nav-column-size: 300px;
+  --color-book-binding-start: rgb(93, 22, 22);
+  --color-book-binding-end:  rgb(100,21,21);
 }
 
 * {
@@ -99,6 +101,7 @@ ul {
 }
 
 .book-item-container {
+  background-image: linear-gradient(to right, var(--color-book-binding-start) 7.5px,  white 7.5px);
   display: flex;
   flex-flow: column nowrap;
   padding: 10px;
