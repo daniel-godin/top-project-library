@@ -23,9 +23,9 @@ function eventListeners() {
   backToLibraryButton.addEventListener('click', showLibraryOrForm);
   submitBookFormButton.addEventListener('click', showLibraryOrForm);
   submitBookFormButton.addEventListener('click', addBookToLibrary);
-  for (i = 0; i < btnDeleteBook.length; i++) {
-    btnDeleteBook[i].addEventListener('click', deleteBookFromLibrary);
-  }
+  // for (i = 0; i < btnDeleteBook.length; i++) {
+  //   btnDeleteBook[i].addEventListener('click', deleteBookFromLibrary);
+  // }
 }
 
 // myLibrary Array of Objects
@@ -91,6 +91,9 @@ function createLibraryInDOM(arr) {
       </div>`
     );
   }
+  for (i = 0; i < btnDeleteBook.length; i++) { // Adds an event listener to every delete button.  Is there a way to add this to the previous for loop?
+    btnDeleteBook[i].addEventListener('click', deleteBookFromLibrary);
+  }
 }
 
 function Book(bookId, title, author, pages, read) {
@@ -109,7 +112,7 @@ function addBookToLibrary(event) {
   let pages = Number(document.getElementById('addBookPages').value);
   let read = document.querySelector("input[name='read-status']:checked").value;
   
-  let newBook = new Book(bookId, title, author, pages, read);
+  let newBook = new Book(bookId, title, author, pages, read); // Book Constructor.  Makes newBook into an Object, then I push it into the array.
 
   arr.push(newBook); // adds a new Object into the array (myLibrary)
   console.table(arr); // checking to see if array receives the new book
@@ -118,12 +121,10 @@ function addBookToLibrary(event) {
   event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
 
   createLibraryInDOM(myLibrary);
-  // reset() // Function to remove library DOM elements.  This prevents the page from creating many many duplicates.
-  // Maybe put reset() into the createLibrary function??
-  eventListeners();
+  // eventListeners();
 }
 
-function reset() { // Function to reload recent books list and library from the array(myLibrary)
+function reset() { // Function to remove all book elements in the DOM.  Used to clear out before repopulating.  Prevents duplicates.
   while (myLibraryContainer.firstChild) { // Removes all child nodes of the library (does not delete anything in the array myLibrary)
     myLibraryContainer.removeChild(myLibraryContainer.firstChild);
   }
