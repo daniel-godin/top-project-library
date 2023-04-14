@@ -16,6 +16,7 @@ const submitBookFormButton = document.getElementById('submitBookFormButton');
 const bookItemContainer = document.getElementsByClassName('book-item-container');
 const bookLink = document.getElementsByClassName('book-link');
 const btnDeleteBook = document.getElementsByClassName('btn-delete-book');
+const btnChangeReadStatus = document.getElementsByClassName('btn-change-read-status');
 
 // eventListeners.  Activated at the end of the script.
 function eventListeners() {
@@ -85,14 +86,17 @@ function createLibraryInDOM(arr) {
         <p><span class='book-descriptor'>Book Title:</span>  <span class='book-info'>${bookTitle}</span></p>
         <p><span class='book-descriptor'>Book Author:</span>  <span class='book-info'>${bookAuthor}</span></p>
         <p><span class='book-descriptor'>Number of Pages:</span>  <span class='book-info'>${bookPages}</span></p>
-        <p><span class='book-descriptor'>Read Status:</span>  <span class='book-info'>${bookStatus}</span><button class='btn-change-read-status'>Change Status</button></p>
+        <p><span class='book-descriptor'>Read Status:</span>  <span class='book-info'>${bookStatus}</span><button class='btn-change-read-status' data-read-status-btn-id='${bookId}'>Change Status</button></p>
         <!-- Possibly Add Buttons To "Share, Save, etc." -->
-        <button class='btn-delete-book' data-id='${bookId}'>Delete From Library</button>
+        <button class='btn-delete-book' data-delete-btn-id='${bookId}'>Delete From Library</button>
       </div>`
     );
   }
   for (i = 0; i < btnDeleteBook.length; i++) { // Adds an event listener to every delete button.  Is there a way to add this to the previous for loop?
     btnDeleteBook[i].addEventListener('click', deleteBookFromLibrary);
+  }
+  for (i = 0; i < btnChangeReadStatus.length; i++) { // Adds an event listener to every change read status button.  Is there a way to add this to the previous for loop?
+    btnChangeReadStatus[i].addEventListener('click', changeReadStatus);
   }
 }
 
@@ -132,7 +136,7 @@ function resetLibraryDOM() { // Function to remove all book elements in the DOM.
 
 function deleteBookFromLibrary() {
   let arr = myLibrary;
-  let btnBookId = Number(this.dataset.id);
+  let btnBookId = Number(this.dataset.deleteBtnId);
   console.log(btnBookId);
   for (i = 0; i < arr.length; i++) {
     if (btnBookId === arr[i].bookId) {
@@ -141,6 +145,27 @@ function deleteBookFromLibrary() {
       break;
     } else {
       console.log("book not found to delete");
+    }
+  }
+  createLibraryInDOM(myLibrary);
+  eventListeners()
+}
+
+function changeReadStatus() { // NEED TO FIX THIS TO MAKE A POPUP TO CHOOSE.  FOR NOW IT JUST CHANGES TO READ OR NOT READ.
+  let arr = myLibrary;
+  let btnId = Number(this.dataset.readStatusBtnId);
+  console.log(btnId);
+  for (i = 0; i < arr.length; i++) {
+    if (btnId === arr[i].bookId) {
+      if (arr[i].read === "Read") {
+        arr[i].read = "Not Read";
+        break;
+      } else if (arr[i].read === "Not Read") {
+        arr[i].read = "Read";
+        break;
+      } else {
+        console.log("Book Not Found");
+      }
     }
   }
   createLibraryInDOM(myLibrary);
