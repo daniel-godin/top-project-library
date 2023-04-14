@@ -1,11 +1,11 @@
 # Project: Library
 
-Project/Challenge by The Odin Project
-- Link to Project/Challenge
+Project/Challenge by [The Odin Project](https://theodinproject.com)
+- [Link to Project/Challenge](https://www.theodinproject.com/lessons/node-path-javascript-library)
 
-Coded By Daniel Godin
-- GitHub Link
-- Live Page Link
+Coded By [Daniel Godin](https://danielgodin.org)
+- [GitHub Link](https://github.com/daniel-godin/top-project-library)
+- [Live Page Link](https://daniel-godin.github.io/top-project-library/)
 
 ### Assignment:
 1. If you haven’t already, set up your project with skeleton HTML/CSS and JS files.
