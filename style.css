@@ -112,6 +112,10 @@ ul {
   gap: 5px;
 }
 
+/* .book-item-container * {
+  position: relative;
+} */
+
 .book-descriptor {
   font-size: .8rem;
 }
@@ -124,8 +128,8 @@ ul {
   padding: 1px;
   margin: 1px;
   font-size: smaller;
-  margin-left: 5px;
-  right: 1px;
+  width: fit-content;
+  display: block;
 }
 
 .form-container {
