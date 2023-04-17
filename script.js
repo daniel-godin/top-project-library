@@ -121,7 +121,7 @@ function addBookToLibrary(event) {
     let newBook = new Book(bookId, title, author, pages, read); // Book Constructor.  Makes newBook into an Object, then I push it into the array.
   
     arr.push(newBook); // adds a new Object into the array (myLibrary)
-    console.table(arr); // checking to see if array receives the new book
+    // console.table(arr); // checking to see if array receives the new book <-- For Error Checking
   
     addBookForm.reset(); // Resets the form of text/input.
     event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
@@ -139,14 +139,12 @@ function resetLibraryDOM() { // Function to remove all book elements in the DOM.
 function deleteBookFromLibrary() {
   let arr = myLibrary;
   let btnBookId = Number(this.dataset.deleteBtnId);
-  console.log(btnBookId);
   for (i = 0; i < arr.length; i++) {
     if (btnBookId === arr[i].bookId) {
-      console.log("book found");
       arr.splice(i, 1);
       break;
     } else {
-      console.log("book not found to delete");
+      // console.log("book not found to delete"); <-- For error checking.
     }
   }
   createLibraryInDOM(myLibrary);
@@ -156,7 +154,6 @@ function deleteBookFromLibrary() {
 function changeReadStatus() { // NEED TO FIX THIS TO MAKE A POPUP TO CHOOSE.  FOR NOW IT JUST CHANGES TO READ OR NOT READ.
   let arr = myLibrary;
   let btnId = Number(this.dataset.readStatusBtnId);
-  console.log(btnId);
   for (i = 0; i < arr.length; i++) {
     if (btnId === arr[i].bookId) {
       if (arr[i].read === "Read") {
