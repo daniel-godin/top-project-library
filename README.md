@@ -7,7 +7,18 @@ Coded By [Daniel Godin](https://danielgodin.org)
 - [GitHub Link](https://github.com/daniel-godin/top-project-library)
 - [Live Page Link](https://daniel-godin.github.io/top-project-library/)
 
-### Assignment:
+## Finished Project Thoughts:
+- This was a great little project to learn how to use JavaScript arrays and Objects in arrays, along with DOM manipulation.  Seems like it's just a half-step away from storing these Objects in a database array, which is what I've wanted to learn for a long time.
+
+- The biggest hurdle for me in this project was connecting a delete button with a specific Object in the array.  I eventually figured it out by labeling the HTML elements with an ID that matched the array's [n].  This is all done during the DOM library creation function.
+
+- Practicing creating HTML elements on load or event was great.  Plan to use this a lot in the future, as long as it's secure.
+
+- I didn't style the project too heavily for now.  It functions good enough for now, but if this was a public facing application, I would do some extensive styling and changing of the layout.  Including a "mobile first" approach, as opposed to my desktop first right now.
+
+- I tried to use git commit's atomically.  I think I mostly succeeded in that endeavour, but will try and do better next time.
+
+## Assignment:
 1. If you haven’t already, set up your project with skeleton HTML/CSS and JS files.
 
 2. All of your book objects are going to be stored in a simple array, so add a function to the script (not the constructor) that can take user’s input and store the new book objects into an array. Your code should look something like this:
