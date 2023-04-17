@@ -12,6 +12,7 @@ const addBookPages = document.getElementById('addBookPages');
 const addBookStatusRead = document.getElementById('addBookStatusRead');
 const addBookStatusNotRead = document.getElementById('addBookStatusNotRead');
 const submitBookFormButton = document.getElementById('submitBookFormButton');
+const formBtnBackToLibrary = document.getElementById('formBtnBackToLibrary');
 // Dom Connected Class Variables:
 const bookItemContainer = document.getElementsByClassName('book-item-container');
 const bookLink = document.getElementsByClassName('book-link');
@@ -23,6 +24,7 @@ function eventListeners() {
   addBookButton.addEventListener("click", showLibraryOrForm);
   backToLibraryButton.addEventListener('click', showLibraryOrForm);
   submitBookFormButton.addEventListener('click', addBookToLibrary);
+  formBtnBackToLibrary.addEventListener('click', showLibraryOrForm);
 }
 
 // myLibrary Array of Objects
@@ -121,11 +123,10 @@ function addBookToLibrary(event) {
     arr.push(newBook); // adds a new Object into the array (myLibrary)
     console.table(arr); // checking to see if array receives the new book
   
-    addBookForm.reset();
+    addBookForm.reset(); // Resets the form of text/input.
     event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
   
     createLibraryInDOM(myLibrary);
-    showLibraryOrForm();
   } 
 }
 
