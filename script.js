@@ -22,11 +22,7 @@ const btnChangeReadStatus = document.getElementsByClassName('btn-change-read-sta
 function eventListeners() {
   addBookButton.addEventListener("click", showLibraryOrForm);
   backToLibraryButton.addEventListener('click', showLibraryOrForm);
-  submitBookFormButton.addEventListener('click', showLibraryOrForm);
   submitBookFormButton.addEventListener('click', addBookToLibrary);
-  // for (i = 0; i < btnDeleteBook.length; i++) {
-  //   btnDeleteBook[i].addEventListener('click', deleteBookFromLibrary);
-  // }
 }
 
 // myLibrary Array of Objects
@@ -109,23 +105,28 @@ function Book(bookId, title, author, pages, read) {
   }
 
 function addBookToLibrary(event) {
-  let arr = myLibrary;
-  let bookId = arr.length;
-  let title = document.getElementById('addBookTitle').value;
-  let author = document.getElementById('addBookAuthor').value;
-  let pages = Number(document.getElementById('addBookPages').value);
-  let read = document.querySelector("input[name='read-status']:checked").value;
+  let isFormValid = addBookForm.checkValidity();
+  if (!isFormValid) { 
+    addBookForm.reportValidity(); // Checks if HTML5 'required' fields are filled out.  If not, prevents submission.  If yes, adds title and goes back to library.
+  } else {
+    let arr = myLibrary;
+    let bookId = arr.length;
+    let title = document.getElementById('addBookTitle').value;
+    let author = document.getElementById('addBookAuthor').value;
+    let pages = Number(document.getElementById('addBookPages').value);
+    let read = document.querySelector("input[name='read-status']:checked").value;
+    
+    let newBook = new Book(bookId, title, author, pages, read); // Book Constructor.  Makes newBook into an Object, then I push it into the array.
   
-  let newBook = new Book(bookId, title, author, pages, read); // Book Constructor.  Makes newBook into an Object, then I push it into the array.
-
-  arr.push(newBook); // adds a new Object into the array (myLibrary)
-  console.table(arr); // checking to see if array receives the new book
-
-  addBookForm.reset();
-  event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
-
-  createLibraryInDOM(myLibrary);
-  // eventListeners();
+    arr.push(newBook); // adds a new Object into the array (myLibrary)
+    console.table(arr); // checking to see if array receives the new book
+  
+    addBookForm.reset();
+    event.preventDefault(); // prevents the submit button from trying to send data to a server.  Keeps it local.
+  
+    createLibraryInDOM(myLibrary);
+    showLibraryOrForm();
+  } 
 }
 
 function resetLibraryDOM() { // Function to remove all book elements in the DOM.  Used to clear out before repopulating.  Prevents duplicates.
